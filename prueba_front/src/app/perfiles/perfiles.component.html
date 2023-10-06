@@ -1,7 +1,8 @@
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
 <div class="container">
  
   
-    <form (ngSubmit)="osubmit()" #form="ngForm">
+    <form  #buscarLoginUsuario="ngForm" (ngSubmit)="onSubmit(buscarLoginUsuario)">
         <input type="text" class="custom-input" minlength="4" [(ngModel)]="username" name="username" 
          placeholder="Ingrese el nombre de usuario"
          required>
@@ -12,13 +13,15 @@
     <app-error-message [message]="errorMessage" [show]="showError" (close)="closeError()"></app-error-message>
 </div>
 
-<div class="custom-list-container">
+<div class="custom-list-container ">
     <ul class="custom-list">
         <li *ngFor="let user of users">
-          <a routerLink="/perfil/{{ user.login }}" (click)="score(user)">
-            
-            {{ user.login }} | {{user.id}} | {{user.score}}
+          <a routerLink="/perfil/{{ user.login }}" (click)="score(user)">            
+            {{ user.login }} | {{user.id}}
           </a>
         </li>
       </ul>
+</div>
+<div class="col-6">
+  <div id="chart-column2" style="height: 300px;"></div>
 </div>
