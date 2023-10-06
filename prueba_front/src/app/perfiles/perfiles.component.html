@@ -1,0 +1,24 @@
+<div class="container">
+ 
+  
+    <form (ngSubmit)="osubmit()" #form="ngForm">
+        <input type="text" class="custom-input" minlength="4" [(ngModel)]="username" name="username" 
+         placeholder="Ingrese el nombre de usuario"
+         required>
+        <button type="submit" class="custom-button">Consultar</button>
+    </form>
+</div>
+<div>
+    <app-error-message [message]="errorMessage" [show]="showError" (close)="closeError()"></app-error-message>
+</div>
+
+<div class="custom-list-container">
+    <ul class="custom-list">
+        <li *ngFor="let user of users">
+          <a routerLink="/perfil/{{ user.login }}" (click)="score(user)">
+            
+            {{ user.login }} | {{user.id}} | {{user.score}}
+          </a>
+        </li>
+      </ul>
+</div>
